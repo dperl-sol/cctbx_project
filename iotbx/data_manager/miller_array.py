@@ -116,7 +116,11 @@ class MillerArrayDataManager(DataManagerBase):
       self._miller_array_arrays[filename] = {}
     if filename not in self._miller_array_types.keys():
       self._miller_array_types[filename] = {}
-    miller_arrays = self.get_miller_array(filename).as_miller_arrays()
+    reconstruct_amplitudes = True
+    if 'miller_array_skip_reconstruct_amplitudes' in self.custom_options:
+      reconstruct_amplitudes = False
+    miller_arrays = self.get_miller_array(filename).\
+      as_miller_arrays(reconstruct_amplitudes=reconstruct_amplitudes)
     labels = []
     for array in miller_arrays:
       label = array.info().label_string()
