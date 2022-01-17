@@ -29,6 +29,7 @@ submitted on the command line together with the name of the reflection file.
 """ % locals()
 
   datatypes = ['miller_array', 'phil' ]
+  data_manager_options = ['miller_array_skip_reconstruct_amplitudes']
   master_phil_str ="""
 merge_equivalents = False
   .type = bool
